@@ -1,0 +1,35 @@
+@keyframes MoveUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(35px);
+    }
+}
+
+@keyframes WaveLow {
+    0%, 100% {
+        transform: translateY(-2px);
+    }
+    50% {
+        transform: translateY(2px);
+    }
+}
+
+@keyframes WaveMedium {
+    0%, 100% {
+        transform: translateY(-4px);
+    }
+    50% {
+        transform: translateY(4px);
+    }
+}
+
+@keyframes WaveHigh {
+    0%, 100% {
+        transform: translateY(-6px);
+    }
+    50% {
+        transform: translateY(6px);
+    }
+}
