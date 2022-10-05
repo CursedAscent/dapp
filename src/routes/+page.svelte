@@ -15,7 +15,9 @@
         <img class="max-w-sm" src="images/cursed_title.png" alt="Cursed Ascent logo title">
         <h1 class="text-slate-100 text-2xl text-center mt-8">A decentralized deckbuilding roguelike game based on Realms: Adventurers and running on Starknet.<br/> Built during MatchboxDAO Hackathon #2.</h1>
         <div class="mt-8">
-            <CursedButton text="Dare enter the spire?" textType="wave" />
+            <a href="/pickgame">
+                <CursedButton text="Dare enter the spire?" textType="wave" />
+            </a>
         </div>
     </div>
 </div>

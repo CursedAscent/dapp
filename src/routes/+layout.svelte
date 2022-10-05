@@ -2,7 +2,7 @@
     import "../app.css";
     import "../animations.custom.css"
     import "../vendor/csshake.min.css"
-  </script>
+</script>
   
 <div class="flex bg-zinc-900 min-h-screen">
   <slot />

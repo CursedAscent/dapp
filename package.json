@@ -32,6 +32,8 @@
 	"dependencies": {
 		"csshake": "^1.7.0",
 		"node-sass": "^7.0.3",
-		"sass": "^1.55.0"
+		"sass": "^1.55.0",
+		"svelte-typewriter": "^3.0.4",
+		"vanilla-tilt": "^1.7.2"
 	}
 }
