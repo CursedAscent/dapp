@@ -66,7 +66,7 @@
     .card-info-desc {
         position: absolute;
         top: 45%;
-        padding: 15px;
+        padding: 18px;
         color:white;
         font-family: "VT323";
         font-size: 24px;
@@ -78,7 +78,7 @@
     .card-info-desc-holo {
         position: absolute;
         top: 55%;
-        padding: 15px;
+        padding: 18px;
         color:white;
         font-family: "VT323";
         font-size: 24px;

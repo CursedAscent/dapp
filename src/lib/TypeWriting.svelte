@@ -8,7 +8,7 @@
     export let delay: number = 0;
     export let unwriteInterval: number = 10;
     export let mode: String = "cascade"
-    export let cursorOnFinish: boolean = true;
+    export let cursorOnFinish: boolean = false;
 
 </script>
 
