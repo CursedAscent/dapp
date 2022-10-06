@@ -1,6 +1,6 @@
 <script lang="ts">
-    import TypeWriting from "$lib/TypeWriting.svelte";
-    import CursedButton from "$lib/CursedButton.svelte";
+    import TypeWriting from "$lib/components/TypeWriting.svelte";
+    import CursedButton from "$lib/components/CursedButton.svelte";
 
     let buttonVisible = false;
     let actionsCounter = 0;

@@ -1,9 +1,11 @@
 <script lang="ts">
-    import TypeWriting from "$lib/TypeWriting.svelte";
-	import CursedCard from "$lib/CursedCard.svelte";
+    import TypeWriting from "$lib/components/TypeWriting.svelte";
+	import CursedCard from "$lib/components/CursedCard.svelte";
     import { fly } from 'svelte/transition';
-	import { initializeTilt } from "$lib/TiltInitializer.svelte";
+	import { initializeTilt } from "$lib/components/TiltInitializer.svelte";
     import { onMount } from 'svelte';
+
+    let interval = 50;
 
     let showCards = false;
 
@@ -15,7 +17,7 @@
 
 <div class="w-full flex flex-col items-center p-5">
     <div>
-        <TypeWriting interval=50 on:done={() => showCards=true} mode="cascade">
+        <TypeWriting interval={interval} on:done={() => showCards=true} mode="cascade">
             <p class="text-slate-100 text-2xl mb-5">Your Adventurer can be one of four classes. The class is usually determined by the loot your Adventurer is wearing, but we are providing you with four adventurers ready to help you with your first ascent. Pick between one of the four below:</p>
         </TypeWriting>
     </div>

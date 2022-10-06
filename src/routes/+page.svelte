@@ -1,5 +1,5 @@
 <script>
-    import CursedButton from "$lib/CursedButton.svelte";
+    import CursedButton from "$lib/components/CursedButton.svelte";
 </script>
 
 <style>
