@@ -11,11 +11,10 @@
     import { fly } from 'svelte/transition';
 	import SpireMap from "$lib/components/SpireMap.svelte";
 
-    let steps=42;
+    let steps=0;
 
     onMount(() => {
-        if ($firstTimeMap == true)
-            steps = 3;
+        steps = $firstTimeMap ? 0 : 42;
     })
 
     async function nextStep(delay: number) {
@@ -56,12 +55,12 @@
         {/if}
     {/if}
     {#if steps > 2}
-    <div transition:fly|local="{{ y: -200, duration: 1000 }}" class="flex flex-grow items-center">
+    <div in:fly|local="{{ y: -200, duration: 1000 }}" class="flex flex-grow items-center">
         <SpireMap on:roomSelected={(d) => pickedRoom(d)} />
     </div>
     {/if}
     {#if steps > 1}
-        <div transition:fly|local="{{ y: 200, duration: 1000 }}" class="flex flex-col w-full items-center space-y-2">
+        <div in:fly|local="{{ y: 200, duration: 1000 }}" class="flex flex-col w-full items-center space-y-2">
             <div class="flex-grow w-full border-t-2 border-slate-100"></div>
             <div>
                 <AdventurerStats />

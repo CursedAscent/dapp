@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "homepage",
         "tutorial",
-        "map"
+        "map",
+        "combat"
     ]
 }
