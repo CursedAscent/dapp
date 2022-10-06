@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "homepage",
-        "tutorial"
+        "tutorial",
+        "map"
     ]
 }
