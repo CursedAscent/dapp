@@ -8,7 +8,7 @@
     }
 </style>
 
-<div class="relative w-full flex flex-col items-center">
+<div class="relative w-full flex flex-col items-center justify-center">
     <div class="flex flex-col items-center max-w-5xl">
         <img class="absolute max-w-sm skull-logo-animate" src="images/cursed_skull.png" alt="Cursed Ascent skull logo" />
         <img class="mt-8 max-w-sm" src="images/cursed_pentagram.png" alt="Cursed Ascent pentagram logo">
