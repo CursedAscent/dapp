@@ -3,6 +3,7 @@
         "homepage",
         "tutorial",
         "map",
-        "combat"
+        "combat",
+        "starknet"
     ]
 }

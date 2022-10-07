@@ -9,7 +9,7 @@
     })
 </script>
 
-<div in:fade|local class="relative w-full flex flex-wrap items-center justify-center">
+<div in:fade|local class="relative flex flex-grow flex-wrap items-center justify-center">
     <a href="/gamemode/tutorial/intro" class="m-2 cursor-pointer">
         <CursedCard title="Tutorial" description="A short tutorial to learn the basics of Cursed Ascent" />
     </a>
