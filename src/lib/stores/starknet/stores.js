@@ -14,3 +14,4 @@ export async function connectWallet() {
         starknet.set(inst);
     } 
 }
+

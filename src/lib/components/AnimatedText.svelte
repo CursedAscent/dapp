@@ -4,6 +4,7 @@
 
     export let text: String;
     export let type: String = "still";
+    export let size: string = "normal";
 </script>
 
 <style>
@@ -53,9 +54,9 @@
     <div class="letters-wave">
         {#each text as letter}
             {#if letter == ' '}
-                <span class="px-0.5"></span>
+                <span class={size == 'big' ? 'text-2xl px-0.5': 'px-0.5'}></span>
             {:else}
-                <span>{letter}</span>
+                <span class={size == 'big' ? 'text-2xl': ''}>{letter}</span>
             {/if}
         {/each}
     </div>

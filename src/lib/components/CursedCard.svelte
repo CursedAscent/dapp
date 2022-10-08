@@ -15,7 +15,7 @@
 
 <style>
     .card-container {
-        min-width: 250px;
+        min-width: 150px;
     }
 
     .card-container-holo {
@@ -49,7 +49,7 @@
     }
 
     .card-hovered-1 {
-        z-index: 999;
+        z-index: 2;
     }
 
     .card-info-title {
@@ -92,6 +92,11 @@
 <div class="tilting-basic-card flex relative card-container card-hovered-{hovered}" on:mouseenter={hovering} on:mouseleave={exiting}>
     <img src="/images/cursed_card_empty.png" alt="A card describing an action" />
     <h2 class="card-info-title">{title}</h2>
+    <p class="card-info-desc">{description}</p>
+</div>
+{:else if type == "basic"}
+<div class="tilting-basic-card flex relative card-container card-hovered-{hovered}" on:mouseenter={hovering} on:mouseleave={exiting}>
+    <img src="/images/cards/Dark_B_Pestilence.png" alt="A card describing an action" />
     <p class="card-info-desc">{description}</p>
 </div>
 {:else if type == "parallax"}
