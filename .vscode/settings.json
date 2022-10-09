@@ -1,9 +1,0 @@
-{
-    "conventionalCommits.scopes": [
-        "homepage",
-        "tutorial",
-        "map",
-        "combat",
-        "starknet"
-    ]
-}
