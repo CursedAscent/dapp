@@ -16,7 +16,6 @@ export async function retrieveConnectedWallet() {
 }
 
 export async function connectWallet() {
-    console.log("in connect wallet");
     var inst = await connect();
 
     if (inst) {

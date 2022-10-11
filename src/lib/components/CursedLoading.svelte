@@ -21,7 +21,6 @@
     onMount(async () => {
         while (1) {
             let randomIdx = Math.round(Math.random() * (funFacts.length - 1));
-            console.log(randomIdx);
             selectedFact = funFacts[randomIdx];
             await sleep(5000);
         }

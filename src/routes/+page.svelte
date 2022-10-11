@@ -7,7 +7,6 @@
         await connectWallet();
 
         if ($walletConnected) {
-            console.log("Connect successful");
             goto("/pickgame");
         }
     }

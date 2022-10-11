@@ -19,7 +19,6 @@
     let isLoading = false;
 
     function initCards() {
-        console.log("init card now");
         initializeTilt();
     }
 
@@ -31,7 +30,7 @@
         try {
             await initializeGame($starknetInst.account, type);
         } catch (e) {
-            console.log(e);
+            console.error(e);
             pristine = false;
         }
         

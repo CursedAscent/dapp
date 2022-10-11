@@ -23,7 +23,6 @@
     }
 
     function pickedRoom(roomPicked: any) {
-        console.log("clicked man")
         goto("/gamemode/tutorial/combat")
     }
 </script>

@@ -21,8 +21,6 @@ export async function initializeGame(account: any, classType: number) {
 
     const { transaction_hash: TxHash } = await contract.start_new_game({collection_addr: "0", token_id: classType}, {maxFee: 1});
 
-    console.log("got tx hash : ", TxHash);
-
     currentCursedAscentTX.set(TxHash.toString());
 
     const result = await account.waitForTransaction(TxHash);

@@ -30,7 +30,6 @@
     let combatDialog: string[] = [];
 
     async function drawCards() {
-        console.log("Drew cards");
         cardsDrawn = true;
         await sleep(500);
         initializeTilt();
