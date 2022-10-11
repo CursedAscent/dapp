@@ -5,13 +5,18 @@
 	import { getAvailableCards } from "$lib/stores/cursedascent/gamemode/stores";
 	import { walletConnected, starknetInst } from "$lib/stores/starknet/stores";
     import CursedCard from "$lib/components/CursedCard.svelte";
+    import CursedLoading from "$lib/components/CursedLoading.svelte";
 	import { initializeTilt } from "$lib/components/TiltInitializer.svelte";
     import { fade } from 'svelte/transition'
+	import { sleep } from "$lib/helpers/sleep.svelte";
 
     let cardsWarrior: any[] = [];
     let cardsHunter: any[] = [];
     let cardsLight: any[] = [];
     let cardsDark: any[] = [];
+
+    let cardsLoaded = false;
+    let totalCardsLoaded = 0;
 
     async function _getCardsFromRefs(cardInsts: any) {
         let cards = [];
@@ -21,7 +26,9 @@
             const metadataJSON = await getMetadataFromHttpURL(cardTokenURI);
             const cardImageURL = ipfsUrlToNFTStorageGatewayUrl(ipfsUrlToNFTStorageGatewayUrl(metadataJSON.image));
 
-            cards.push({url: cardImageURL, name: metadataJSON.name, description: metadataJSON.description});
+            cards.push({url: cardImageURL, rarity: ref.rarity, name: metadataJSON.name, description: metadataJSON.description, id: ref.card_ref.collection_addr.toString(16) + ":" + ref.card_ref.token_id.toString(16)});
+
+            totalCardsLoaded += 1;
         }
 
         return cards;
@@ -29,53 +36,64 @@
 
     async function initializeLibrary() {
         const availableCardRefs = await getAvailableCards($starknetInst.account);
-        
-        console.log(availableCardRefs.warrior);
 
         cardsWarrior = await _getCardsFromRefs(availableCardRefs.warrior.cards);
         cardsHunter = await _getCardsFromRefs(availableCardRefs.hunter.cards);
         cardsLight = await _getCardsFromRefs(availableCardRefs.light.cards);
         cardsDark = await _getCardsFromRefs(availableCardRefs.dark.cards);
 
-        console.log(cardsWarrior);
+        cardsLoaded = true;
+
+        await sleep(500); // Deferred initialization for cards
+
+        initializeTilt();
     }
 
     $: if ($walletConnected) {
-            initializeLibrary();
+        initializeLibrary();
     }
+
 </script>
 
-<div class="relative flex flex-grow flex-wrap justify-center">
+{#if cardsLoaded}
+<div in:fade|local class="relative flex flex-grow flex-wrap justify-center">
     <div class="flex w-full justify-center">
         <h2 class="text-slate-100 text-3xl">Warrior Class</h2>
     </div>
     {#each cardsWarrior as card}
-        <div in:fade|local class="m-2">
-            <CursedCard type="basic" imageURL="{card.url}" title="{card.name}" description="{card.description}" />
+        <div class="m-2">
+            <CursedCard type="rare" imageURL="{card.url}" title="{card.name}" description="{card.description}" contractID="{card.id}" />
         </div>
     {/each}
     <div class="flex w-full justify-center">
         <h2 class="text-slate-100 text-3xl">Hunter Class</h2>
     </div>
     {#each cardsHunter as card}
-        <div in:fade|local class="m-2">
-            <CursedCard type="basic" imageURL="{card.url}" title="{card.name}" description="{card.description}" />
+        <div class="m-2">
+            <CursedCard type="rare" imageURL="{card.url}" title="{card.name}" description="{card.description}" contractID="{card.id}" />
         </div>
     {/each}
     <div class="flex w-full justify-center">
         <h2 class="text-slate-100 text-3xl">Light Mage Class</h2>
     </div>
     {#each cardsLight as card}
-        <div in:fade|local class="m-2">
-            <CursedCard type="basic" imageURL="{card.url}" title="{card.name}" description="{card.description}" />
+        <div class="m-2">
+            <CursedCard type="rare" imageURL="{card.url}" title="{card.name}" description="{card.description}" contractID="{card.id}" />
         </div>
     {/each}
     <div class="flex w-full justify-center">
         <h2 class="text-slate-100 text-3xl">Dark Mage Class</h2>
     </div>
     {#each cardsDark as card}
-        <div in:fade|local class="m-2">
-            <CursedCard type="basic" imageURL="{card.url}" title="{card.name}" description="{card.description}" />
+        <div class="m-2">
+            <CursedCard type="rare" imageURL="{card.url}" title="{card.name}" description="{card.description}" contractID="{card.id}" />
         </div>
     {/each}
 </div>
+{:else}
+    <div class="flex flex-grow">
+        <CursedLoading>
+            <p class="text-slate-100 text-xl">Loaded {totalCardsLoaded} / 52 Cards</p>
+        </CursedLoading>
+    </div>
+{/if}

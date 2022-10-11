@@ -5,7 +5,7 @@
     import { goto } from '$app/navigation';
     import { sleep } from "$lib/helpers/sleep.svelte";
 
-    import { firstTimeMap } from "$lib/stores/tutorial/stores.js";
+    import { firstTimeMap, pickedTutorialClass } from "$lib/stores/tutorial/stores.js";
 
 	import { onMount } from 'svelte';
     import { fly } from 'svelte/transition';
@@ -48,8 +48,13 @@
             </div>
         {:else if steps == 3}
         <div class="flex items-center">
-            <TypeWriting cursorOnFinish={true} mode="loopOnce">
+            <TypeWriting cursorOnFinish={true} interval={75} mode="loopOnce">
                 <p class="text-slate-100 text-2xl mb-5">And above that, a map of the spire's floors</p>
+                <p class="text-slate-100 text-2xl mb-5">You can find 4 types of rooms in Cursed Ascent</p>
+                <p class="text-slate-100 text-2xl mb-5">Fight rooms, Elite Fight rooms, Rest rooms and one Boss room at the top</p>
+                <p class="text-slate-100 text-2xl mb-5">You need to clear one room from a floor before proceeding to the next one</p>
+                <p class="text-slate-100 text-2xl mb-5">It is time for us to part ways...</p>
+                <p class="text-slate-100 text-2xl mb-5">Click on the room on the first floor, and may luck be by your side Adventurer...</p>
             </TypeWriting>
         </div>
         {/if}
@@ -60,10 +65,10 @@
     </div>
     {/if}
     {#if steps > 1}
-        <div in:fly|local="{{ y: 200, duration: 1000 }}" class="flex flex-col w-full items-center space-y-2">
+        <div in:fly|local="{{ y: 200, duration: 1000 }}" class="flex flex-col w-full items-center space-y-2 mt-4">
             <div class="flex-grow w-full border-t-2 border-slate-100"></div>
             <div>
-                <AdventurerStats />
+                <AdventurerStats classType={$pickedTutorialClass} />
             </div>
         </div>
     {/if}

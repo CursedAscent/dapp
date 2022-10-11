@@ -15,8 +15,8 @@
     let storiesLeft = mapLevels.length;
 
     function roomSelected(idFloor: number, idRoom: number) {
-        console.log("hello")
-        dispatch('roomSelected', { 'floor' : mapLevels.length - idFloor, 'room' : idRoom})
+        if (idFloor == mapLevels.length - 1)
+            dispatch('roomSelected', { 'floor' : mapLevels.length - idFloor, 'room' : idRoom})
     }
 </script>
 

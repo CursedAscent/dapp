@@ -1,2 +1,2 @@
-export const CURSED_ASCENT_ADDR=import.meta.env.VITE_CURSED_ASCENT_ADDR;
-export const CARD_COLLECTION_ADDR=import.meta.env.CARD_COLLECTION_ADDR;
+export const CURSED_ASCENT_ADDR=import.meta.env.VITE_CURSED_ASCENT_ADDR ?? "0x2e3ee0410b0a4e11ac440b84af5556ae00ed36a77f62220fee190f06c82e6c0";
+export const CARD_COLLECTION_ADDR=import.meta.env.VITE_CARD_COLLECTION_ADDR;

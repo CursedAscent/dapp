@@ -12,6 +12,10 @@
     })
 </script>
   
+<svelte:head>
+	<title>Cursed Ascent</title>
+</svelte:head>
+
 <div class="flex flex-col  bg-zinc-900 min-h-screen">
   <div class="flex flex-row justify-end p-2">
     <div class="flex flex-row items-center rounded-full border-slate-100 bg-slate-100 p-2 cursor-pointer">
@@ -25,4 +29,7 @@
     </div>
   </div>
   <slot />
+  <div class="flex flex-row justify-center">
+    <p class="text-slate-400">Built by <a href="https://github.com/StormOtx">StormOtx</a> and <a href="https://github.com/bipbipbopbop">BipBop</a></p>
+  </div>
 </div>

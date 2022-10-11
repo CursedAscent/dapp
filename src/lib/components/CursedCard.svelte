@@ -2,10 +2,11 @@
     import CursedText from "./CursedText.svelte";
 
     export let title: String = "An action title";
-    export let description: String = "Sample Description";
+    export let description: string = "Sample Description";
     export let type: String = "info";
     export let imageURL: string = "/images/cursed_card_empty.png";
     export let holographSrc: string = "";
+    export let contractID: string = "";
 
     let hovered = 0;
     const hovering = () => {
@@ -13,6 +14,13 @@
 	}
     const exiting = () => {
         hovered = 0;
+    }
+
+    function trimEllipsis(str: string) {
+        if (str.length > 15) {
+            return str.slice(0, 5) + '...' + str.slice(str.length-7, str.length);
+        }
+        return str;
     }
 </script>
 
@@ -115,6 +123,18 @@
         text-align: center;
         vertical-align: middle;
     }
+
+    .card-info-data-id {
+        position: absolute;
+        top: 89%;
+        padding: 18px;
+        color:white;
+        font-family: "VT323";
+        font-size: 18px;
+        width: 100%;
+        text-align: left;
+        vertical-align: middle;
+    }
 </style>
 
 {#if type == "info"}
@@ -136,6 +156,15 @@
     <p class="card-info-desc-basic">
         <CursedText text="{description}" />
     </p>
+    <a href={"https://goerli.voyager.online/contract/0x" + contractID.split(":")[0]} class="card-info-data-id">{"0x" + trimEllipsis(contractID)}</a>
+</div>
+{:else if type == "rare"}
+<div class="tilting-rare-card flex relative card-container card-hovered-{hovered}" on:mouseenter={hovering} on:mouseleave={exiting}>
+    <img src="{imageURL}" alt="A card describing an action" />
+    <p class="card-info-desc-basic">
+        <CursedText text="{description}" />
+    </p>
+    <a href={"https://goerli.voyager.online/contract/0x" + contractID.split(":")[0]} class="card-info-data-id">{"0x" + trimEllipsis(contractID)}</a>
 </div>
 {:else if type == "parallax"}
 <div class="tilting-basic-card flex relative card-container-holo card-hovered-{hovered}" on:mouseenter={hovering} on:mouseleave={exiting}>

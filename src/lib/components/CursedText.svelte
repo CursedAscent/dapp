@@ -48,8 +48,6 @@
         else {
             let reinterpreted = wordDefinitions[word];
 
-            console.log("Reinterpreted : " + reinterpreted)
-
             if (action === undefined)
                 reinterpreted = reinterpreted.replaceAll(word, "X");
             else

@@ -1,0 +1,18 @@
+{
+    "name":         "Imp",
+    "description":  "A feisty little demon",
+    "actions": [
+        {
+            "description_before": "Readies his fists",
+            "description_after": "Hits you for {DH}"
+        },
+        {
+            "description_before": "Is scooting back",
+            "description_after": "Gains {PP}"
+        },
+        {
+            "description_before": "Is mumbling something",
+            "description_after": "Gains {AB}"
+        }
+    ]
+}
