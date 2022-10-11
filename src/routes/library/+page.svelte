@@ -17,14 +17,20 @@
 
     let cardsLoaded = false;
     let totalCardsLoaded = 0;
+    let totalURLLoaded = 0;
 
     async function _getCardsFromRefs(cardInsts: any) {
         let cards = [];
+        let preloadedImages = [];
 
         for (const ref of cardInsts) {
             const cardTokenURI = await getCardTokenURIHttpURL($starknetInst.account, ref.card_ref.collection_addr, ref.card_ref.token_id.toString(16));
             const metadataJSON = await getMetadataFromHttpURL(cardTokenURI);
             const cardImageURL = ipfsUrlToNFTStorageGatewayUrl(ipfsUrlToNFTStorageGatewayUrl(metadataJSON.image));
+
+            preloadedImages.push(new Image());
+            preloadedImages[preloadedImages.length - 1].src = cardImageURL;
+            preloadedImages[preloadedImages.length - 1].onload = () => { totalURLLoaded += 1 };
 
             cards.push({url: cardImageURL, rarity: ref.rarity, name: metadataJSON.name, description: metadataJSON.description, id: ref.card_ref.collection_addr.toString(16) + ":" + ref.card_ref.token_id.toString(16)});
 
@@ -55,7 +61,7 @@
 
 </script>
 
-{#if cardsLoaded}
+{#if cardsLoaded && totalURLLoaded == 52}
 <div in:fade|local class="relative flex flex-grow flex-wrap justify-center">
     <div class="flex w-full justify-center">
         <h2 class="text-slate-100 text-3xl">Warrior Class</h2>
@@ -93,7 +99,11 @@
 {:else}
     <div class="flex flex-grow">
         <CursedLoading>
-            <p class="text-slate-100 text-xl">Loaded {totalCardsLoaded} / 52 Cards</p>
+            {#if !cardsLoaded}
+                <p class="text-slate-100 text-xl">Loaded {totalCardsLoaded} / 52 Cards</p>
+            {:else}
+                <p class="text-slate-100 text-xl">Prefetching card data from IPFS gateway : {totalURLLoaded} / 52 Cards</p>
+            {/if}
         </CursedLoading>
     </div>
 {/if}
