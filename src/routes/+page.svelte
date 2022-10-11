@@ -1,6 +1,6 @@
 <script lang="ts">
     import CursedButton from "$lib/components/CursedButton.svelte";
-    import { walletConnected, connectWallet } from "$lib/stores/starknet/stores.js";
+    import { walletConnected, connectWallet } from "$lib/stores/starknet/stores";
     import { goto } from '$app/navigation';
 
     async function connectUserWallet() {

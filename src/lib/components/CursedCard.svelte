@@ -1,7 +1,10 @@
 <script lang="ts">
+    import CursedText from "./CursedText.svelte";
+
     export let title: String = "An action title";
     export let description: String = "Sample Description";
     export let type: String = "info";
+    export let imageURL: string = "/images/cursed_card_empty.png";
     export let holographSrc: string = "";
 
     let hovered = 0;
@@ -75,6 +78,32 @@
         vertical-align: middle;
     }
 
+    .card-info-desc-basic {
+        position: absolute;
+        top: 55%;
+        padding: 18px;
+        color:white;
+        font-family: "VT323";
+        font-size: 24px;
+        width: 100%;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .card-info-coming-soon {
+        position: absolute;
+        top: 75%;
+        background: rgba(225, 0, 0, .5);
+        opacity: 1 !important;
+        padding: 18px;
+        color:white;
+        font-family: "VT323";
+        font-size: 24px;
+        width: 100%;
+        text-align: center;
+        vertical-align: middle;
+    }
+
     .card-info-desc-holo {
         position: absolute;
         top: 55%;
@@ -94,10 +123,19 @@
     <h2 class="card-info-title">{title}</h2>
     <p class="card-info-desc">{description}</p>
 </div>
+{:else if type == "unavailable"}
+<div class="tilting-basic-card flex relative card-container opacity-50 card-hovered-{hovered}" on:mouseenter={hovering} on:mouseleave={exiting}>
+    <img src="/images/cursed_card_empty.png" alt="A card describing an action" />
+    <h2 class="card-info-title">{title}</h2>
+    <p class="card-info-desc">{description}</p>
+    <p class="card-info-coming-soon">Coming Soon</p>
+</div>
 {:else if type == "basic"}
 <div class="tilting-basic-card flex relative card-container card-hovered-{hovered}" on:mouseenter={hovering} on:mouseleave={exiting}>
-    <img src="/images/cards/Dark_B_Pestilence.png" alt="A card describing an action" />
-    <p class="card-info-desc">{description}</p>
+    <img src="{imageURL}" alt="A card describing an action" />
+    <p class="card-info-desc-basic">
+        <CursedText text="{description}" />
+    </p>
 </div>
 {:else if type == "parallax"}
 <div class="tilting-basic-card flex relative card-container-holo card-hovered-{hovered}" on:mouseenter={hovering} on:mouseleave={exiting}>

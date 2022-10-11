@@ -3,8 +3,13 @@
     import "../animations.custom.css"
     import "../vendor/csshake.min.css"
 
-    import { walletConnected } from "$lib/stores/starknet/stores.js";
+    import { retrieveConnectedWallet, walletConnected } from "$lib/stores/starknet/stores.js";
+	  import { onMount } from "svelte";
 
+    onMount(async () => {
+        // Auto mount wallet if connected
+        await retrieveConnectedWallet();
+    })
 </script>
   
 <div class="flex flex-col  bg-zinc-900 min-h-screen">
