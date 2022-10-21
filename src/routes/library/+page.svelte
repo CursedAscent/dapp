@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { afterUpdate } from 'svelte';
 	import { ipfsUrlToNFTStorageGatewayUrl } from "$lib/helpers/ipfs/gateway";
 	import { getMetadataFromHttpURL } from "$lib/helpers/ipfs/metadata";
 	import { getCardTokenURIHttpURL } from "$lib/stores/cursedascent/cardcollection/stores";
@@ -49,15 +50,28 @@
         cardsDark = await _getCardsFromRefs(availableCardRefs.dark.cards);
 
         cardsLoaded = true;
+    }
 
-        await sleep(500); // Deferred initialization for cards
-
+    async function initializeAnimations() {
+        await sleep(1000); // Deferred initialization for cards
+        
         initializeTilt();
     }
 
     $: if ($walletConnected) {
         initializeLibrary();
     }
+
+    let chit = 0;
+
+    afterUpdate(() => {
+        if (cardsLoaded && totalCardsLoaded == 52) {
+            if (chit > 0)
+                initializeAnimations();
+            else
+                chit++;
+        }
+    })
 
 </script>
 
