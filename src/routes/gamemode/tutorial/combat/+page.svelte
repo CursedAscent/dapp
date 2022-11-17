@@ -73,7 +73,7 @@
             <h1 class="text-3xl text-slate-100 text-center mr-2">
                 {CockyImpJSON.name}
             </h1>
-            <img style="filter: invert(1); image-rendering: pixelated; max-height:45px; max-width: 45px;" src="/images/map_fight.png" alt="Scene icon" />
+            <img style="filter: invert(1); image-rendering: pixelated; max-height:45px; max-width: 45px; width: 100%" src="/images/map_fight.png" alt="Scene icon" />
         </div>
         <div class="flex border-t-2 border-slate-100 mt-5"></div>
         {#if introFinished}
@@ -90,7 +90,7 @@
                     <p class="text-slate-100 text-lg" >{ "> " + CockyImpJSON.events[1]}</p>
                 </TypeWriting>
                 {#each combatDialog as dialog}
-                    <TypeWriting mode="cascade" interval={40}>
+                    <TypeWriting mode="cascade" skippable={false} interval={40}>
                         <span class="text-slate-100">></span>
                         <span class="text-red-500 text-lg">Cocky Imp</span>
                         <span class="text-slate-100 text-lg">{dialog}</span>

@@ -21,7 +21,7 @@
   <div class="flex flex-row justify-between p-2">
     <a href="/">
       {#if $page.url.pathname !== "/"}
-        <img src="images/cursed_skull_fit.png" width="84px" alt="Cursed skull homepage link" />
+        <img src="/images/cursed_skull_fit.png" width="84px" alt="Cursed skull homepage link" />
       {/if}
     </a>
     <div class="flex flex-row items-center rounded-full border-slate-100 bg-slate-100 p-2 cursor-pointer">

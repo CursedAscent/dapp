@@ -25,4 +25,7 @@
     <a href="/library" class="m-2 cursor-pointer">
         <CursedCard title="The Archive" description="A library cataloging all the cursed cards available in Cursed Ascent" />
     </a>
+    <a href="/trophies" class="m-2 cursor-pointer">
+        <CursedCard title="Trophies" description="The various artifacts you have collected during your ascents" />
+    </a>
 </div>
