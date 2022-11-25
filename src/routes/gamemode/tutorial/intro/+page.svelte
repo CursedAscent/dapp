@@ -7,7 +7,7 @@
     let buttonVisible = false;
     let actionsCounter = 0;
 
-    $: if (actionsCounter == 4) {
+    $: if (actionsCounter > 3) {
         buttonVisible = true;
     }
 </script>

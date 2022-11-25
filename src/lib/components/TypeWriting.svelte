@@ -24,10 +24,9 @@
         if (skippable && !disabled) {
             disabled = true;
             let fireNumber = mode === "loopOnce" ? innerData.children.length : 1;
-            
-            for (let i=0; i < fireNumber; i++) {
+
+            for (let i=0; i < fireNumber; i++)
                 dispatch('done', { 'message' : "done"});
-            }
         }
     }
 
